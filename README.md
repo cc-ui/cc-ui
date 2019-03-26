@@ -8,4 +8,6 @@
 	https://github.com/cc-ui/cc-ui/issues
 ## 关于作者
 	--个人地址
+## 开发计划
+	- 基础组件开发
 ## 收款二维码
