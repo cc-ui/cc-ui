@@ -55,7 +55,7 @@
 github和npm注册
 
 GitHub 添加ssh key
-	ssh-keygen 
+	ssh-keygen
 	pbcopy < ~/.ssh/id_rsa.pub
 创建项目
 clone 项目到本地
@@ -64,21 +64,38 @@ git config user.name ‘cc-ui’
 git config user.email ‘ljw5203@126.com’
 
 搭建开发环境
-	npm init 
+	确保已安装node npm
+		node -v
+		npm -v
+		卸载node
+			sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+
+	npm init
 		name cc-ui
 		version：0.0.1
-		description: 
+		description:
 		keywords:
+		author: https://github.com/cc-ui
 
-	安装插件
-		npm i babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-latest webpack webpack-cli --save-dev
+	构建工具
+		安装插件
+			npm i babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-latest webpack webpack-cli --save-dev
+		-- 安装可以使用淘宝npm源
+			npm.taobao.
+			$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+		根目录下创建
+			.babelrc 文件，内容如下
+			{
+				"presets":["es2015","latest"],
+				"plugins":[]
+			}
+			创建webpack配置文件
+			webpack.config.js
+			修改package.json 终端scripts，
+				增加 release: 'webpack'
+        安装http-server(全局安装)
+	        npm install http-server -g
 
-	根目录下创建 .babelrc 文件，内容如下
-	{
-		"presets":["es2015","lasest"],
-		"plugins":[]
-	}
-	
 规范一级目录
 	项目到一级目录要提前规范好，最起码一些常用的目录要提前定好留用，
 	src - 源代码
@@ -86,28 +103,58 @@ git config user.email ‘ljw5203@126.com’
 	test - 单元测试用例
 	example - 示例
 	doc - 文档
-完善readme。md
-	# name
-	## 简介
-	## 安装下载
-	## 快速使用
-	— 使用文档
-	— 二次开发文档
-	##交流 & 提问
-	## 关于作者
-		个人地址
-		收款二维码
-提交代码
 
-写代码
-	代码规范，
 写文档 & 写测试用例
 	在写文档之前，还需要准备其他工具。定位到项目目录下
-	安装gitbook，npm i gitbook-cli -g 然后传家summary.md
+	安装gitbook，
+	    npm i gitbook-cli -g
+	    然后传家summary.md
+	    gitbook init (会看到各个文件本创建了，就可以完善各个文档的内容。)
+	    内容完成后，运行 gitbook build可以将md文件发布为html文件，默认放在——book文件夹。
+	    启动npm run example 之后可以访问效果
+	    然后再次修改README.md 把文档链接加上
+
 	注意，文档和测试用例对于一个开源产品来说非常重要，而且文档和测试用例本身就是代码不可分割的一部分。
+
 如何写测试用例，需要用到其他工具，内容也相对独立，
 
-	
+规范git分支
+    至少要存在两个分支，master和dev，dev是开发中的代码。当然你可以规范更多的分支，
+    例如：next fix-bug等，但是注意一个原则 -- 用不到的就不要规划。
+    git branch (查看分支）
+
+完善README.md
+    README是开源项目的一张脸，用户的第一印象。必须包含一下内容：
+        产品简介（此处要突出特点，打差异化竞争）
+        产品安装和下载
+        快速使用（详细的使用文档或者二次开发文档，外链即可）
+        交流 & 提问
+        关于作者
+
+        # name
+        ## 简介
+        ## 安装下载
+        ## 快速使用
+        — 使用文档
+        — 二次开发文档
+        ##交流 & 提问
+        ## 关于作者
+            个人地址
+            收款二维码
+
+提交代码：
+
+    写代码：
+        使用编码规范的工具，es-lint等，否则经过长时间的维护，必然留坑。
+    写文档 & 写测试用例
+    【注意】
+        文档和测试用例对于一个开源产品来说非常重要！
+        文档和测试用例本身就是代码不可分割的一部分。
+        如何写测试用例 -- ？？？
 
 
-	
+
+
+
+
+
